@@ -1,9 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
-mongoose.connect(
-  "mongodb+srv://apex-admin:gCu8R1F?&0&1@apex-realty-group-clust.ppv2dsk.mongodb.net/?retryWrites=true&w=majority&appName=apex-realty-group-cluste"
-);
+dotenv.config();
+
+mongoose
+  .connect(process.env.CONNECTION_STRING)
+  .then(() => {
+    console.log("Connected to mongodb");
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 const app = express();
 
