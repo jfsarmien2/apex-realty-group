@@ -51,6 +51,7 @@ function Signup() {
           placeholder="Username"
           className="border border-gray-400 focus:outline-none p-3 rounded-lg"
           onChange={handleChange}
+          required
         />
         <input
           type="email"
@@ -59,6 +60,7 @@ function Signup() {
           placeholder="Email"
           className="border border-gray-400 focus:outline-none p-3 rounded-lg"
           onChange={handleChange}
+          required
         />
         <input
           type="password"
@@ -67,6 +69,7 @@ function Signup() {
           placeholder="Password"
           className="border border-gray-400 focus:outline-none p-3 rounded-lg"
           onChange={handleChange}
+          required
         />
         <button
           disabled={loading}
