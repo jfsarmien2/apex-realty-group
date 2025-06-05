@@ -50,7 +50,7 @@ function Signup() {
           name="username"
           id="username"
           placeholder="Username"
-          className="border border-gray-400 focus:outline-none p-3 rounded-lg"
+          className="border border-gray-300 focus:outline-none p-3 rounded-lg bg-white"
           onChange={handleChange}
           required
         />
@@ -59,7 +59,7 @@ function Signup() {
           name="email"
           id="email"
           placeholder="Email"
-          className="border border-gray-400 focus:outline-none p-3 rounded-lg"
+          className="border border-gray-300 focus:outline-none p-3 rounded-lg bg-white"
           onChange={handleChange}
           required
         />
@@ -68,7 +68,7 @@ function Signup() {
           name="password"
           id="password"
           placeholder="Password"
-          className="border border-gray-400 focus:outline-none p-3 rounded-lg"
+          className="border border-gray-300 focus:outline-none p-3 rounded-lg bg-white"
           onChange={handleChange}
           required
         />
