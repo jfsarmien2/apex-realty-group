@@ -1,8 +1,36 @@
-const user = (req, res) => {
-  res.status(200).json({
-    status: "success",
-    message: "Hello from user route...",
-  });
-};
+import bcrypt from "bcryptjs";
+import { errorHandler } from "../utils/error.js";
+import User from "../models/user.model.js";
 
-export default user;
+export const updateUser = async (req, res, next) => {
+  if (req?.user?.id !== req?.params?.id) {
+    return next(errorHandler(401, "You can only update your own account"));
+  }
+  try {
+    if (req.body.password) {
+      const salt = await bcrypt.genSalt(10);
+      const hashed_password = await bcrypt.hash(req.body.password, salt);
+      req.body.password = hashed_password;
+    }
+    const updatedUser = await User.findByIdAndUpdate(
+      req?.params?.id,
+      {
+        $set: {
+          username: req.body.username,
+          email: req.body.email,
+          password: req.body.password,
+          avatar: req.body.avatar,
+        },
+      },
+      { new: true }
+    );
+    const { password, ...rest } = updatedUser?._doc;
+    res.status(200).json({
+      success: true,
+      message: "Account successfully updated",
+      user: rest,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
