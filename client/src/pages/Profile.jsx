@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   getDownloadURL,
   getStorage,
@@ -201,6 +202,12 @@ function Profile() {
         >
           {loading ? "updating..." : "update"}
         </button>
+        <Link
+          className="bg-green-700 hover:opacity-95 disabled:opacity-80 rounded-lg text-white text-center uppercase p-3"
+          to="/create-listing"
+        >
+          Create listing
+        </Link>
       </form>
       <div className="flex justify-between mt-5">
         <span
